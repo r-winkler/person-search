@@ -1,0 +1,97 @@
+<h1>Personensuche</h1>
+
+<form [formGroup]="searchForm" (submit)="this.searchClick$.next()" fxLayout="row wrap" fxLayoutGap="100px">
+    <div fxLayout="row wrap" fxLayoutGap="20px">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Vorname</mat-label>
+            <input matInput formControlName="firstname" required>
+        </mat-form-field>
+        <button *ngIf="(searching$ | async) === false"
+                mat-mini-fab
+                color="primary"
+                type="submit">
+            <mat-icon>search</mat-icon>
+        </button>
+        <button *ngIf="(searching$ | async) === true"
+                type="button"
+                mat-icon-button>
+            <mat-icon>
+                <mat-spinner diameter="31"></mat-spinner>
+            </mat-icon>
+        </button>
+    </div>
+    <div fxLayout="column">
+        <mat-label>Wähle Algorithmus:</mat-label>
+        <mat-radio-group [formControl]="algoTypeControl">
+            <mat-radio-button value="strcmp95">strcmp95</mat-radio-button>
+            <mat-radio-button value="jaro">Jaro</mat-radio-button>
+            <mat-radio-button value="jaro-winkler" [checked]="true">Jaro-Winkler</mat-radio-button>
+            <mat-radio-button value="levenshtein">Levenshtein</mat-radio-button>
+            <mat-radio-button value="damarau-levenshtein">Damarau-Levenshtein</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div fxLayout="column">
+        <div>
+            Grenzwerte [%]
+        </div>
+        <div>
+            <mat-label style="margin-right:40px">Name</mat-label>
+            <mat-slider
+                    [formControl]="nameThresholdControl"
+                    [max]="100"
+                    [min]="0"
+                    [step]="1"
+                    [thumbLabel]="true"
+                    [vertical]="false">
+            </mat-slider>
+        </div>
+        <div>
+            <mat-label style="margin-right:20px">Vorname</mat-label>
+            <mat-slider
+                    [formControl]="firstnameThresholdControl"
+                    [max]="100"
+                    [min]="0"
+                    [step]="1"
+                    [thumbLabel]="true"
+                    [vertical]="false">
+            </mat-slider>
+        </div>
+    </div>
+
+    <div fxLayout="column">
+        <div fxLayout="column">
+            <mat-slide-toggle #wordSimilarity formControlName="wordSimilarity">Wortähnlichkeit</mat-slide-toggle>
+        </div>
+        <div>
+            <mat-label style="margin-right:40px">Name</mat-label>
+            <mat-slider
+                    [disabled]="!wordSimilarity.checked"
+                    [formControl]="wordSimilarityNameThresholdControl"
+                    [max]="100"
+                    [min]="0"
+                    [step]="1"
+                    [thumbLabel]="true"
+                    [vertical]="false">
+            </mat-slider>
+        </div>
+        <div>
+            <mat-label style="margin-right:20px">Vorname</mat-label>
+            <mat-slider
+                    [disabled]="!wordSimilarity.checked"
+                    [formControl]="wordSimilarityFirstnameThresholdControl"
+                    [max]="100"
+                    [min]="0"
+                    [step]="1"
+                    [thumbLabel]="true"
+                    [vertical]="false">
+            </mat-slider>
+        </div>
+    </div>
+
+</form>
+
+

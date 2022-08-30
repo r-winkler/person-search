@@ -1,0 +1,41 @@
+<mat-card fxLayout="column">
+    <div fxLayout="column" style="max-width: 50%">
+        <mat-form-field>
+            <input id="filter"
+                   matInput
+                   type="text"
+                   placeholder="Filter"
+                   [formControl]="filterFormControl">
+            <button id="resetFilter" type="button" mat-button *ngIf="filterFormControl.value" matSuffix mat-icon-button (click)="filterFormControl.reset()">
+                <mat-icon color="primary">close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div fxLayout="column">
+        <table fxFlex="100" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name</th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Firstname Column -->
+            <ng-container matColumnDef="firstname">
+                <th mat-header-cell *matHeaderCellDef> Firstname</th>
+                <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[500]"></mat-paginator>
+    </div>
+</mat-card>
+
+
+
+
+

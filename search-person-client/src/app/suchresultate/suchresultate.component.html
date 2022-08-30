@@ -1,0 +1,17 @@
+<table fxFlex="100" mat-table [dataSource]="(first100Results$ | async) || []" class="mat-elevation-z8">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Firstname Column -->
+    <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef> Firstname </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

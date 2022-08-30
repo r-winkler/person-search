@@ -1,0 +1,74 @@
+<h1>Test</h1>
+
+<form [formGroup]="testForm">
+    <div fxLayout="row wrap" fxLayoutGap="20px">
+        <mat-form-field>
+            <mat-label>String 1</mat-label>
+            <input matInput formControlName="string1" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>String 1</mat-label>
+            <input matInput formControlName="string2" required>
+        </mat-form-field>
+        <div fxLayout="column">
+            <mat-slide-toggle formControlName="ignoreCase">Groß- und Kleinschreibung nicht berücksichtigen</mat-slide-toggle>
+            <mat-slide-toggle formControlName="ignoreAccent">Transliteration</mat-slide-toggle>
+        </div>
+    </div>
+</form>
+
+<div *ngIf="(algoCompare$ | async) as res" fxLayout="column" style="margin-top:20px">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between">
+        <div>
+            <h2>Edit-based algorithms</h2>
+            <p>Levenshtein: {{res.damerau_levenshtein * 100 | number:'1.2-2'}} %</p>
+            <p>Damerau-Levenshtein: {{res.damerau_levenshtein * 100 | number:'1.2-2'}}%</p>
+            <p>Jaro: {{res.jaro * 100 | number:'1.2-2'}}%</p>
+            <p>Jaro-Winkler: {{res.jaro_winkler * 100 | number:'1.2-2'}}%</p>
+            <p>Strcmp95: {{res.strcmp95 * 100 | number:'1.2-2'}}%</p>
+            <p>Hamming: {{res.hamming * 100 | number:'1.2-2'}}%</p>
+            <p>Gotoh: {{res.gotoh * 100 | number:'1.2-2'}}%</p>
+            <p>Mlipns: {{res.mlipns * 100 | number:'1.2-2'}}%</p>
+            <p>Needleman-Wunsch: {{res.needleman_wunsch * 100 | number:'1.2-2'}}%</p>
+        </div>
+        <div>
+            <h2>Token-based algorithms</h2>
+            <p>Jaccard: {{res.jaccard * 100 | number:'1.2-2'}}%</p>
+            <p>Sorensen: {{res.sorensen * 100 | number:'1.2-2'}}%</p>
+            <p>Tversky: {{res.tversky * 100 | number:'1.2-2'}}%</p>
+            <p>Sorensen-Dice: {{res.sorensen_dice * 100 | number:'1.2-2'}}%</p>
+            <p>Overlap: {{res.overlap * 100 | number:'1.2-2'}}%</p>
+            <p>Cosine: {{res.cosine * 100 | number:'1.2-2'}}%</p>
+            <p>Tanimoto: {{res.tanimoto * 100 | number:'1.2-2'}}%</p>
+            <p>Monge-Elkan: {{res.monge_elkan * 100 | number:'1.2-2'}}%</p>
+            <p>Bag: {{res.bag * 100 | number:'1.2-2'}}%</p>
+            <p>Trigram: {{res.trigram * 100 | number:'1.2-2'}}%</p>
+            <p>Word-Trigram: {{res.word_trigram * 100 | number:'1.2-2'}}%</p>
+        </div>
+        <div>
+            <h2>Sequence-based algorithms</h2>
+            <p>LCS Seq: {{res.lcsseq * 100 | number:'1.2-2'}}%</p>
+            <p>LCS Str: {{res.lcsstr * 100 | number:'1.2-2'}}%</p>
+            <p>Ratcliff-Obershelp: {{res.ratcliff_obershelp * 100 | number:'1.2-2'}}%</p>
+        </div>
+        <div>
+            <h2>Simple algorithms</h2>
+            <p>Prefix: {{res.prefix * 100 | number:'1.2-2'}}%</p>
+            <p>Postfix: {{res.postfix * 100 | number:'1.2-2'}}%</p>
+            <p>Length: {{res.length * 100 | number:'1.2-2'}}%</p>
+            <p>Identity: {{res.identity * 100 | number:'1.2-2'}}%</p>
+            <p>Matrix: {{res.matrix * 100 | number:'1.2-2'}}%</p>
+        </div>
+        <div>
+            <h2>Phonetic algorithms</h2>
+            <p>Mra: {{res.mra * 100 | number:'1.2-2'}}%</p>
+            <p>Editex: {{res.editex * 100 | number:'1.2-2'}}%</p>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
