@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { combineLatest, Observable, of } from 'rxjs';
 import { SucheService } from '../suche/suche.service';
 import { auditTime, catchError, shareReplay, startWith, switchMap } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { AlgoCompareDTO } from '../algo-compare.dto';
 })
 export class TestComponent implements OnInit {
 
-    testForm: FormGroup;
+    testForm: UntypedFormGroup;
     string1Control: AbstractControl | null;
     string2Control: AbstractControl | null;
     ignoreCaseControl: AbstractControl | null;
@@ -21,7 +21,7 @@ export class TestComponent implements OnInit {
     algoCompare$: Observable<AlgoCompareDTO>;
 
 
-    constructor(private fb: FormBuilder,
+    constructor(private fb: UntypedFormBuilder,
                 private sucheService: SucheService) {
 
         this.testForm = this.fb.group({

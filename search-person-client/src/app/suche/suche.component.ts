@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, of, Subject } from 'rxjs';
 
 import { catchError, exhaustMap, filter, finalize, shareReplay, tap } from 'rxjs/operators';
@@ -12,21 +12,21 @@ import { SucheService } from './suche.service';
 })
 export class SucheComponent implements OnInit {
 
-    searchForm: FormGroup;
+    searchForm: UntypedFormGroup;
     nameControl: AbstractControl | null;
     firstnameControl: AbstractControl | null;
-    algoTypeControl: FormControl;
-    nameThresholdControl: FormControl;
-    firstnameThresholdControl: FormControl;
-    wordSimilarityControl: FormControl;
-    wordSimilarityNameThresholdControl: FormControl;
-    wordSimilarityFirstnameThresholdControl: FormControl;
+    algoTypeControl: UntypedFormControl;
+    nameThresholdControl: UntypedFormControl;
+    firstnameThresholdControl: UntypedFormControl;
+    wordSimilarityControl: UntypedFormControl;
+    wordSimilarityNameThresholdControl: UntypedFormControl;
+    wordSimilarityFirstnameThresholdControl: UntypedFormControl;
 
     searchClick$ = new Subject();
     searching$ = new BehaviorSubject<boolean>(false);
 
 
-    constructor(private fb: FormBuilder,
+    constructor(private fb: UntypedFormBuilder,
                 private sucheService: SucheService) {
 
         this.searchForm = this.fb.group({

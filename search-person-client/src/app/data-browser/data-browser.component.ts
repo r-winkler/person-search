@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { SucheService } from '../suche/suche.service';
 import { MatPaginator } from '@angular/material/paginator';
@@ -16,7 +16,7 @@ export class DataBrowserComponent implements OnInit {
 
     displayedColumns: string[] = ['name', 'firstname'];
     dataSource = new MatTableDataSource();
-    filterFormControl = new FormControl();
+    filterFormControl = new UntypedFormControl();
 
     // @ts-ignore
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
