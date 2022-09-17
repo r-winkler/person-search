@@ -1,6 +1,6 @@
 <h1>Personensuche</h1>
 
-<form [formGroup]="searchForm" (submit)="this.searchClick$.next()" fxLayout="row wrap" fxLayoutGap="100px">
+<form [formGroup]="searchForm" (submit)="this.searchClick$.next(null)" fxLayout="row wrap" fxLayoutGap="100px">
     <div fxLayout="row wrap" fxLayoutGap="20px">
         <mat-form-field>
             <mat-label>Name</mat-label>
