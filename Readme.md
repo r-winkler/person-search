@@ -1,8 +1,21 @@
+# create virtual env
+
+```
+python3 -m venv ./venv
+```
+
 # activate virtual env
 
 ```
 . venv/bin/activate
 ```
+
+# install packages
+
+```
+pip install -r requirements.txt
+```
+
 # Execute Flask
 
 Im search-person-server Verzeichnis ausführen:
