@@ -35,7 +35,7 @@ export class SucheComponent implements OnInit {
             algoType: ['jaro-winkler', [Validators.required]],
             nameThreshold: [65, [Validators.required]],
             firstnameThreshold: [65, [Validators.required]],
-            wordSimilarity: [true, [Validators.required]],
+            wordSimilarity: [false, [Validators.required]],
             wordSimilarityNameThreshold: [30, [Validators.required]],
             wordSimilarityFirstnameThreshold: [30, [Validators.required]]
         });
